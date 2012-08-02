@@ -24,7 +24,6 @@ class DatabaseController {
     public function DatabaseController()
     {
         $ini_array = parse_ini_file("dbconfig.ini");
-        print_r($ini_array);
         
         $this->dbname = $ini_array["dbname"];
         $this->dbhost = $ini_array["dbhost"];
@@ -46,6 +45,30 @@ class DatabaseController {
         else 
             return 0;   
     }
+    
+    public function getDataforUser($username)
+    {
+       ; 
+    }
+    
+    public function imageExists($imagename)
+    {
+       $query = "SELECT * FROM  `image` WHERE image_path='$imagename'";
+        $result = $this->db->query($query);
+
+        if ($result->num_rows == 1)
+            return 1;
+        else 
+            return 0;  
+    }
+    
+    public function registerImage($imagename,$album,$owner)
+    {
+        $query = "INSERT INTO image VALUES (null,'$imagename','$owner','$album')";
+        $result = $this->db->query($query);
+    }
+    
+    
     
 }
 
