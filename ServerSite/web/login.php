@@ -1,7 +1,13 @@
 <?php
+session_start();
+require_once '../inc/DatabaseController.php';
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+$username = $_POST['username'];
+$password = $_POST['password'];
+
+$db = new DatabaseController();
+
+if ($db->userExists($username, $password) == 1)
+        $_SESSION['username']=$username;
+    header("Location:index.php");
 ?>
