@@ -2,7 +2,7 @@
 session_start();
 if (isset($_SESSION['username']))
 {
-    header('profile.php');
+    header("Location:profile.php");
 }
 ?>
 <!DOCTYPE html>
